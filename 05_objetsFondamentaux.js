@@ -8,7 +8,7 @@ const user = {
 
 // 2. Création d'un objet en passant par un modèle
 class Car {
-  #name;
+  #name; // En js, le '#' rend une propriétaire privé
   //   model;
   //   year;
 
@@ -61,7 +61,31 @@ const car2 = new Car("Audi", "A4", 2019);
 // console.log(car2.#name); // Impossible car #name est privé
 console.log(car2.name);
 
-car2.name = null;
-console.log(car2.name);
+// 5. Modification d'une valeur d'une propriété
+user.firstName = "James";
+car2.name = "Mercedes";
+console.log(user.firstName, car2.name);
 
-const carError = new Car("", "X5", 2019);
+// const carError = new Car("", "X5", 2019); // - Erreur
+
+// 6. Copie d'objet
+let car6 = new Car("Ford", "Focus", 2019);
+
+// Attention, un type complexe (fonction, objet, tableau) ne doivent pas être copiés avec un simple ' = '
+let carCopy = car6;
+
+console.log(car6, carCopy);
+
+carCopy.year = 2016;
+console.log("car6, year: ", car6.year); // 2019
+console.log("carCopy, year: ", carCopy.year); // 2016
+
+// Copie propre
+let carCopyPropre = new Car("copy");
+Object.assign(carCopyPropre, car6); // --> carCopyPropre est une copie de car6
+console.log(carCopyPropre);
+
+let copy = Object.assign({}, car6);
+console.log(copy);
+
+// Copie propre avec spread operator
