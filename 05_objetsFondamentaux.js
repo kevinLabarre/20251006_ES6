@@ -88,4 +88,5 @@ console.log(carCopyPropre);
 let copy = Object.assign({}, car6);
 console.log(copy);
 
-// Copie propre avec spread operator
+// Copie propre avec 'sucre syntaxique' -> en utilisant le spread operator
+let copySpread = { ...car6 };
